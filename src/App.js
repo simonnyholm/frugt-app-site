@@ -17,12 +17,12 @@ function App() {
         <Routes>
           {token ? (
             <Route path="/" element={<Layout />}>
-              <Route path="/orders" element={<Orders />} />
+              <Route index element={<Orders />} />
               <Route path="/productcatalogue" element={<ProductCatalogue />} />
               <Route path="/costumerbase" element={<Customerbase />} />
             </Route>
           ) : (
-            <Route index element={<Login />} />
+            <Route path="/" element={<Login />} />
           )}
         </Routes>
       </BrowserRouter>
