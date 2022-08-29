@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import OrderedProductsMap from "../Components/OrderedProductsMap";
 import TokenContext from "../Contexts/TokenContext";
 
 const Orders = () => {
@@ -17,7 +18,6 @@ const Orders = () => {
 
   console.log("orders", orders);
   console.log("token", token);
-  console.log("orderedProducts", orders.products);
 
   return (
     <div>
@@ -25,14 +25,26 @@ const Orders = () => {
       <div>
         <ul>
           {orders.map((order) => (
-            <li>{order.customerId}</li>
+            <>
+              <h3>Best.id: {order.id}</h3>
+              <div>
+                {" "}
+                {order.products.map((orderedProducts) => (
+                  <>
+                    <p>{orderedProducts.amount}</p>
+
+                    <OrderedProductsMap
+                      productId={orderedProducts.productId}
+                      amount={orderedProducts.amount}
+                    />
+                  </>
+                ))}
+              </div>
+              <p>Kunde.id: {order.customerId}</p>
+            </>
           ))}
         </ul>
-        <ul>
-          {orders.products.map((orderedProducts) => (
-            <li>{orderedProducts.amount}</li>
-          ))}
-        </ul>
+        <div></div>
       </div>
     </div>
   );
