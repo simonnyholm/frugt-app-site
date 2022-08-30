@@ -1,7 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import TokenContext from "../Contexts/TokenContext";
+import DeleteOrderItem from "./DeleteOrderItem";
 
-const OrderedProductsMap = ({ productId, amount }) => {
+const OrderedProductsMap = ({ productId, amount, orderId }) => {
   const [products, setProducts] = useState([]);
 
   const { token } = useContext(TokenContext);
@@ -20,8 +21,6 @@ const OrderedProductsMap = ({ productId, amount }) => {
 
   const filtered = products.filter((product) => product.id === productId);
 
-  function itemDeleteHandler() {}
-
   return (
     <div>
       {filtered.map((item, index) => {
@@ -34,8 +33,9 @@ const OrderedProductsMap = ({ productId, amount }) => {
             <p>
               {amount} kasse(r) à {item.price} kr.
             </p>
-            <p>Sum: {item.price * amount} kr.</p>
-            <button onClick={itemDeleteHandler}>Slet</button>
+            <p>= {item.price * amount} kr.</p>
+
+            <DeleteOrderItem productId={productId} orderId={orderId} />
           </div>
         );
       })}
