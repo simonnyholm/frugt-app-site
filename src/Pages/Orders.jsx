@@ -28,30 +28,31 @@ const Orders = () => {
   return (
     <div>
       <h1>Bestillinger</h1>
+      <div>
+        {orders.map((order, index) => (
+          <section>
+            <h3>Best.id: {order.id}</h3>
+            <>
+              {order.products.map((orderedProducts) => (
+                <>
+                  <OrderedProductsMap
+                    productId={orderedProducts.productId}
+                    amount={orderedProducts.amount}
+                    orderId={order.id}
+                    /*camelCase i koden vs. hyphen i api SKAL RETTES!!!!*/
+                  />
+                </>
+              ))}
+              <OrderTotal total={total} />
+            </>
+            <OrderingCustomerMap customerId={order.customerId} />
+            <DeleteOrder orderId={order.id} />
+            <PrintOrder orderId={order.id} />
 
-      {orders.map((order, index) => (
-        <section>
-          <h3>Best.id: {order.id}</h3>
-          <>
-            {order.products.map((orderedProducts) => (
-              <>
-                <OrderedProductsMap
-                  productId={orderedProducts.productId}
-                  amount={orderedProducts.amount}
-                  orderId={order.id}
-                  /*camelCase i koden vs. hyphen i api SKAL RETTES!!!!*/
-                />
-              </>
-            ))}
-            <OrderTotal total={total} />
-          </>
-          <OrderingCustomerMap customerId={order.customerId} />
-          <DeleteOrder orderId={order.id} />
-          <PrintOrder orderId={order.id} />
-
-          <hr />
-        </section>
-      ))}
+            <hr />
+          </section>
+        ))}
+      </div>
     </div>
   );
 };

@@ -8,13 +8,13 @@ const DeleteOrderModal = ({ setIsOpen, isOpen, orderId }) => {
 
   console.log(orderId);
   function deleteHandler() {
-    fetch("http://localhost:3001/orders/order/id=" + orderId, {
+    fetch(`http://localhost:3001/orders/${orderId}`, {
       headers: {
         authorization: "Bearer " + token,
       },
       method: "DELETE",
     }).then(function () {
-      alert("item deleted");
+      alert("Order deleted");
     });
   }
 

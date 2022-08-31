@@ -1,14 +1,20 @@
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import TokenContext from "../Contexts/TokenContext";
+import { useContext } from "react";
 
-const DeleteOrderItemModal = ({ setIsOpen, isOpen }) => {
+const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId }) => {
+  const { token } = useContext(TokenContext);
+
   function deleteHandler() {
-    /*fetch("http://localhost:3001/blogs/" + order.id + , {
-            method: "DELETE",
-          }).then(function () {
-            alert("item deleted");
-            
-          });*/
+    fetch(`http://localhost:3001/orders/${orderId}&`, {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+      method: "DELETE",
+    }).then(function () {
+      alert("item deleted");
+    });
   }
 
   return (
