@@ -61,7 +61,7 @@ const CustomersDetails = ({ customer, handleGetData, setSelectedCustomers }) => 
           <label className="font-bold">Name:</label>
           <input name="name" value={detail.name} className="cursor-pointer hover:bg-green-100"/>
         </div>
-        <div className="flex  justify-between mt-4 drop-shadow-md">
+        <div className="flex justify-between mt-4 drop-shadow-md">
           <label className="font-bold">Address:</label>
           <input name="street" value={detail.address.street} className="cursor-pointer hover:bg-green-100" />
         </div>

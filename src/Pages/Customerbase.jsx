@@ -5,7 +5,6 @@ import { BsSearch } from "react-icons/bs";
 import CustomersDetails from "../Components/CustomersDetail";
 
 
-
   export default function CustomerBase() {
     const [customers, setCustomers] = useState([])
     const [selectedCustomers, setSelectedCustomers] = useState();

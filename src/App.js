@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import Orders from "./Pages/Orders";
 import AddProduct from "./Components/AddProduct";
-import CustomerBase from "./Pages/CustomerBase";
+import CustomerBase from "./Pages/Customerbase";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
