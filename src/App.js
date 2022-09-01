@@ -29,7 +29,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/add" element={<AddProduct />} />
             <Route path="/customers" element={<CustomerBase />} />
-            <Route path="/orders" element={<Orders />} />
+            {/* <Route path="/orders" element={<Orders />} /> */}
           </Route>
         ) : (
           <Route path="/" element={<SigIn />} />
