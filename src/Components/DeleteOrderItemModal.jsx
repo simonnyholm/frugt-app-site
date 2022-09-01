@@ -7,6 +7,7 @@ const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
   const { token } = useContext(TokenContext);
 
   const [thisOrder, setThisOrder] = useState([]);
+
   function DeleteHandler() {
     fetch(`http://localhost:3001/orders/${orderId}`, {
       headers: {
@@ -18,26 +19,33 @@ const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
 
     const orderedArray = thisOrder.products;
 
+    const orderlList = async function () {
+      const wait = await fetch("http://localhost:3001/orders/");
+    };
 
-
-   const orderlList = async function (){
-      const wait = await fetch("http://localhost:3001/orders/")
-    }
-    
-    /*orderedArray.prototype.indexOfObject = function (property, value) {
+    const thisIndex = (orderedArray.prototype.indexOfObject = function (
+      property,
+      value
+    ) {
       for (let i = 0, len = this.length; i < len; i++) {
         if (this[i][property] === value) return i;
       }
       return -1;
-    };
+    });
 
-    console.log("indexToSplice", orderedArray.prototype.indexOfObject);
+    /*
+    orderedArray.prototype.indexOfObject = function (property, value) {
+      for (let i = 0, len = this.length; i < len; i++) {
+        if (this[i][property] === value) return i;
+      }
+      return -1;
+    };*/
 
-    const splicedArray = thisOrder.products.splice(
-      orderedArray.prototype.indexOfObject
-    );
+    console.log("indexToSplice", thisIndex);
 
-    console.log("splicedArray", splicedArray);*/
+    const splicedArray = thisOrder.products.splice(thisIndex);
+
+    console.log("splicedArray", splicedArray);
 
     fetch(`http://localhost:3001/orders/${orderId}`, {
       headers: {
@@ -45,6 +53,7 @@ const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
       },
 
       method: "PATCH",
+      body: JSON.stringify(splicedArray),
     }).then(function () {
       alert("item deleted");
     });
