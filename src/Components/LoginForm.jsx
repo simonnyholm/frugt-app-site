@@ -26,16 +26,18 @@ const LoginForm = () => {
       });
   }
 
+ 
+
   return (
     <form onSubmit={submitHandler}>
       <div>
         <label>
-          <input type="text" name="username" id="" />
+          <input type="text" name="username" id="username" />
         </label>
       </div>
       <div>
         <label>
-          <input type="password" name="password" id="" />
+          <input type="password" name="password" id="password" />
         </label>
       </div>
 
