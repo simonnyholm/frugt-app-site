@@ -1,22 +1,53 @@
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import TokenContext from "../Contexts/TokenContext";
-import { useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 
 const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
   const { token } = useContext(TokenContext);
 
-  function deleteHandler() {
-    useEffect(() => {
-      fetch(`http://localhost:3001/orders/${orderId}`, {
-        headers: {
-          authorization: "Bearer " + token,
-        },
-        method: "PATCH",
-      }).then(function () {
-        alert("item deleted");
-      });
-    }, []);
+  const [thisOrder, setThisOrder] = useState([]);
+  function DeleteHandler() {
+    fetch(`http://localhost:3001/orders/${orderId}`, {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setThisOrder(data));
+
+    const orderedArray = thisOrder.products;
+
+
+
+   const orderlList = async function (){
+      const wait = await fetch("http://localhost:3001/orders/")
+    }
+    
+    /*orderedArray.prototype.indexOfObject = function (property, value) {
+      for (let i = 0, len = this.length; i < len; i++) {
+        if (this[i][property] === value) return i;
+      }
+      return -1;
+    };
+
+    console.log("indexToSplice", orderedArray.prototype.indexOfObject);
+
+    const splicedArray = thisOrder.products.splice(
+      orderedArray.prototype.indexOfObject
+    );
+
+    console.log("splicedArray", splicedArray);*/
+
+    fetch(`http://localhost:3001/orders/${orderId}`, {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+
+      method: "PATCH",
+    }).then(function () {
+      alert("item deleted");
+    });
   }
 
   return (
@@ -59,7 +90,7 @@ const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
                 className="py-2 px-3 text-sm text-black-400 p-3 rounded-full border-spacing-1 border-2 border-grey-300"
                 onClick={() => {
                   setIsOpen(false);
-                  deleteHandler();
+                  DeleteHandler();
                 }}
               >
                 Bekræft

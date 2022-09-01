@@ -5,18 +5,18 @@ import { useContext, useEffect } from "react";
 
 const DeleteOrderModal = ({ setIsOpen, isOpen, orderId }) => {
   const { token } = useContext(TokenContext);
-  useEffect(() => {
-    function deleteHandler() {
-      fetch(`http://localhost:3001/orders/${orderId}`, {
-        headers: {
-          authorization: "Bearer " + token,
-        },
-        method: "DELETE",
-      }).then(function () {
-        alert("Order deleted");
-      });
-    }
-  }, []);
+
+  function DeleteHandler() {
+    fetch(`http://localhost:3001/orders/${orderId}`, {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+      method: "DELETE",
+    }).then(function () {
+      alert("Order deleted");
+    });
+  }
+
   console.log(orderId);
 
   return (
@@ -61,7 +61,7 @@ const DeleteOrderModal = ({ setIsOpen, isOpen, orderId }) => {
                 className="py-2 px-3 text-sm text-black-400 p-3 rounded-full border-spacing-1 border-2 border-grey-300"
                 onClick={() => {
                   setIsOpen(false);
-                  deleteHandler();
+                  DeleteHandler();
                 }}
               >
                 Bekræft
