@@ -3,7 +3,7 @@ import { Link, Outlet,NavLink } from "react-router-dom";
 const Home = () => {
     return ( 
         <div className="flex justify-center mt-40 ">
-            <section  className=" col-2 drop-shadow-lg ">
+            <section  className="col-2 drop-shadow-lg ">
                 <article className="flex justify-center font-bold w-96 italic h-72 text-4xl bg-bgProduct hover:font-extrabold mb-4 mr-4 border rounded-lg hover:drop-shadow-2xl">
                 <NavLink to="/products" className=" text-center mt-20" >VareKatalog</NavLink> 
                 </article>
