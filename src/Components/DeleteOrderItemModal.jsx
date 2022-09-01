@@ -1,20 +1,22 @@
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import TokenContext from "../Contexts/TokenContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
-const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId }) => {
+const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
   const { token } = useContext(TokenContext);
 
   function deleteHandler() {
-    fetch(`http://localhost:3001/orders/${orderId}&`, {
-      headers: {
-        authorization: "Bearer " + token,
-      },
-      method: "DELETE",
-    }).then(function () {
-      alert("item deleted");
-    });
+    useEffect(() => {
+      fetch(`http://localhost:3001/orders/${orderId}`, {
+        headers: {
+          authorization: "Bearer " + token,
+        },
+        method: "PATCH",
+      }).then(function () {
+        alert("item deleted");
+      });
+    }, []);
   }
 
   return (

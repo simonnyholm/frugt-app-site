@@ -39,6 +39,8 @@ const Orders = () => {
                     productId={orderedProducts.productId}
                     amount={orderedProducts.amount}
                     orderId={order.id}
+                    order={orders}
+                    setOrder={setOrders}
                     /*camelCase i koden vs. hyphen i api SKAL RETTES!!!!*/
                   />
                 </>
