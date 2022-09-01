@@ -2,7 +2,7 @@ import { BsArrowLeftShort} from "react-icons/bs";
 import { useState } from "react";
 import Logo from "../image/Logo.png";
 import { useContext } from "react";
-import { Link, Outlet,NavLink } from "react-router-dom";
+import { Link,Outlet,NavLink } from "react-router-dom";
 import TokenContext from "../Contexts/TokenContext";
 import {
   BsFillPersonLinesFill,
