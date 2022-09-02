@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import TokenContext from "../Contexts/TokenContext";
 import DeleteOrderItem from "./DeleteOrderItem";
 
-const OrderedProductsMap = ({ productId, amount, orderId }) => {
+const OrderedProductsMap = ({ productId, amount, orderId, orders, setOrders }) => {
   const [products, setProducts] = useState([]);
 
   const { token } = useContext(TokenContext);
@@ -35,7 +35,7 @@ const OrderedProductsMap = ({ productId, amount, orderId }) => {
             </p>
             <p>= {item.price * amount} kr.</p>
 
-            <DeleteOrderItem productId={productId} orderId={orderId} />
+            <DeleteOrderItem productId={productId} orderId={orderId} orders={orders} setOrders={setOrders} />
           </div>
         );
       })}

@@ -3,7 +3,14 @@ import { AnimatePresence } from "framer-motion";
 import TokenContext from "../Contexts/TokenContext";
 import { useState, useContext, useEffect } from "react";
 
-const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
+const DeleteOrderItemModal = ({
+  setIsOpen,
+  isOpen,
+  orderId,
+  productId,
+  orders,
+  setOrders,
+}) => {
   const { token } = useContext(TokenContext);
 
   const [thisOrder, setThisOrder] = useState([]);
@@ -19,43 +26,26 @@ const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
 
     const orderedArray = thisOrder.products;
 
+    console.log("orderedArray", orderedArray);
+
+    /*
     const orderlList = async function () {
       const wait = await fetch("http://localhost:3001/orders/");
     };
-
-    const thisIndex = (orderedArray.prototype.indexOfObject = function (
-      property,
-      value
-    ) {
-      for (let i = 0, len = this.length; i < len; i++) {
-        if (this[i][property] === value) return i;
-      }
-      return -1;
-    });
-
-    /*
-    orderedArray.prototype.indexOfObject = function (property, value) {
-      for (let i = 0, len = this.length; i < len; i++) {
-        if (this[i][property] === value) return i;
-      }
-      return -1;
-    };*/
+    */
 
     console.log("indexToSplice", thisIndex);
 
-    const splicedArray = thisOrder.products.splice(thisIndex);
+    const splicedArray = thisOrder.products.splice(thisIndex, 1);
 
     console.log("splicedArray", splicedArray);
 
-    fetch(`http://localhost:3001/orders/${orderId}`, {
+    fetch(`http://localhost:3001/orders?id=${orderId}`, {
       headers: {
         authorization: "Bearer " + token,
       },
 
       method: "PATCH",
-      body: JSON.stringify(splicedArray),
-    }).then(function () {
-      alert("item deleted");
     });
   }
 

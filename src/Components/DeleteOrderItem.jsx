@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DeleteOrderItemModal from "./DeleteOrderItemModal";
 
-const DeleteOrderItem = ({ productId, orderId }) => {
+const DeleteOrderItem = ({ productId, orderId, orders, setOrders }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -12,6 +12,8 @@ const DeleteOrderItem = ({ productId, orderId }) => {
         orderId={orderId}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        orders={orders}
+        setOrders={setOrders}
       />
     </>
   );
