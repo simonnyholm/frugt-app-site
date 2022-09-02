@@ -28,10 +28,10 @@ const Orders = () => {
   return (
     <div>
       <h1>Bestillinger</h1>
-      <div>
+      <div className="overflow-auto p-8">
         {orders.map((order, index) => (
           <section>
-            <h3>Best.id: {order.id}</h3>
+            <h3>Bestillings-id: {order.id}</h3>
             <>
               {order.products.map((orderedProducts) => (
                 <>

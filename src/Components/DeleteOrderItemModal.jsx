@@ -4,11 +4,10 @@ import TokenContext from "../Contexts/TokenContext";
 import { useState, useContext, useEffect } from "react";
 
 const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
-  const { token } = useContext(TokenContext);
-
   const [thisOrder, setThisOrder] = useState([]);
+  const [prut, setPrut] = useState([]);
 
-  function DeleteHandler() {
+  useEffect(function () {
     fetch(`http://localhost:3001/orders/${orderId}`, {
       headers: {
         authorization: "Bearer " + token,
@@ -16,34 +15,28 @@ const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
     })
       .then((res) => res.json())
       .then((data) => setThisOrder(data));
+  }, []);
 
+  const { token } = useContext(TokenContext);
+
+  function DeleteHandler() {
     const orderedArray = thisOrder.products;
 
-    const orderlList = async function () {
-      const wait = await fetch("http://localhost:3001/orders/");
-    };
-
-    const thisIndex = (orderedArray.prototype.indexOfObject = function (
-      property,
-      value
-    ) {
-      for (let i = 0, len = this.length; i < len; i++) {
-        if (this[i][property] === value) return i;
-      }
-      return -1;
-    });
+    console.log(orderedArray);
 
     /*
-    orderedArray.prototype.indexOfObject = function (property, value) {
-      for (let i = 0, len = this.length; i < len; i++) {
-        if (this[i][property] === value) return i;
-      }
-      return -1;
-    };*/
+    const mapFilter = orderedArray((current) =>
+      [current.filter((item) => item !== productId)].map((item) => item)
+    );
+    */
 
-    console.log("indexToSplice", thisIndex);
+    const currentIndex = orderedArray.indexOf(productId);
 
-    const splicedArray = thisOrder.products.splice(thisIndex);
+    console.log("indexToSplice", currentIndex);
+
+    const splicedArray = thisOrder.products.splice();
+
+    setPrut(orderedArray);
 
     console.log("splicedArray", splicedArray);
 
@@ -53,7 +46,7 @@ const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
       },
 
       method: "PATCH",
-      body: JSON.stringify(splicedArray),
+      body: JSON.stringify(orderedArray),
     }).then(function () {
       alert("item deleted");
     });
@@ -111,5 +104,4 @@ const DeleteOrderItemModal = ({ setIsOpen, isOpen, orderId, productId }) => {
     </AnimatePresence>
   );
 };
-
 export default DeleteOrderItemModal;
