@@ -49,8 +49,8 @@ const Details = ({ product, handleGetData, setSelectedProduct }) => {
       <Dialog isOpen={delDialog} onDismiss={() => setDelDialog(false)} className="rounded-md" >
         <p className="font-bold">{`Er du sikker på, at du vil slette ${detail?.name}?`}</p>
         <div className="flex m-auto justify-center space-x-4 pt-14 ">
-        <button className="bg-red-500 w-28 h-10 rounded-md font-bold hover:font-extrabold hover:bg-red-600 " onClick={handleDelete}>Yes</button>
-        <button className="bg-green-500 w-28 h-10 rounded-md font-bold hover:font-extrabold hover:bg-green-600 " onClick={() => setDelDialog(false)}>No</button>
+        <button className="bg-red-500 w-28 h-10 rounded-md font-bold hover:font-extrabold hover:bg-red-600 " onClick={handleDelete}>Bekræft</button>
+        <button className="bg-green-500 w-28 h-10 rounded-md font-bold hover:font-extrabold hover:bg-green-600 " onClick={() => setDelDialog(false)}>Annullér</button>
         </div>
       </Dialog>
       <form
@@ -93,9 +93,9 @@ const Details = ({ product, handleGetData, setSelectedProduct }) => {
             className="bg-red-500 w-28 h-10 font-bold rounded-md hover:font-extrabold hover:bg-red-600"
             onClick={() => setDelDialog(true)}
           >
-            Delete
+            Slet
           </button>
-          <button className="bg-green-500 w-28 font-bold rounded-md hover:font-extrabold hover:bg-green-600" type="submit">Edit</button>
+          <button className="bg-green-500 w-28 font-bold rounded-md hover:font-extrabold hover:bg-green-600" type="submit">Rediger</button>
         </div>
       </form>
     </div>
