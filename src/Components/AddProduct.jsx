@@ -84,7 +84,7 @@ const AddProduct = () => {
           <input name="price" className="border rounded p-2 focus:outline-none focus:border-green-600  focus:ring-green-600" />
         </div>
         <div className="flex justify-center m-auto mt-10">
-        <button type="submit"  className="bg-green-500 w-28 h-10 rounded-md font-bold hover:font-extrabold hover:bg-green-600 ">Tilføj vare</button>
+        <button type="submit" className="bg-green-500 w-28 h-10 rounded-md font-bold hover:font-extrabold hover:bg-green-600 ">Tilføj vare</button>
 
         </div>
       </form>
