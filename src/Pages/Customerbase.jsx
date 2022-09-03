@@ -2,8 +2,7 @@
 import { useEffect, useState, useContext } from "react"
 import TokenContext from "../Contexts/TokenContext";
 import { BsSearch } from "react-icons/bs";
-import CustomersDetails from "../Components/CustomersDetail";
-
+import CustomersDetails from "../Components/CustomerDetail";
 
 
   export default function CustomerBase() {
@@ -92,6 +91,12 @@ import CustomersDetails from "../Components/CustomersDetail";
         </div>
       )
     }
+
+
+
+
+
+
 
 
 
