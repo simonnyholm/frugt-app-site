@@ -28,7 +28,7 @@ const Orders = () => {
   return (
     <div className="mt-10 ml-10 py-8">
       <h1 className="text-center font-bold">Bestillinger</h1>
-      <div className="mx-8 my-5 overflow-scroll h-screen w-11/12 border rounded-md border-green-800">
+      <div className="mx-8 my-5 overflow-scroll h-screen pb-24 w-11/12 border rounded-md border-green-800">
         {orders.map((order, index) => (
           <section>
             <table>
