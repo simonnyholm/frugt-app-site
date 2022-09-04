@@ -48,7 +48,7 @@ const Orders = () => {
               <OrderTotal total={total} />
             </>
             <OrderingCustomerMap customerId={order.customerId} />
-            <DeleteOrder orderId={order.id} />
+            <DeleteOrder orderId={order.id} orders={orders} setOrders={setOrders} />
             <PrintOrder orderId={order.id} />
 
             <hr />

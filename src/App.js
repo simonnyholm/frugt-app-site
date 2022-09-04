@@ -1,4 +1,4 @@
-import {Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 import Products from "./Pages/ProductCatalogue";
@@ -25,7 +25,7 @@ function App() {
       <Routes>
         {token ? (
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home/>} />
+            <Route index element={<Home />} />
             <Route path="/products" element={<Products />} />
             <Route path="/add" element={<AddProduct />} />
             <Route path="/customers" element={<CustomerBase />} />
