@@ -18,9 +18,10 @@ const DeleteOrderModal = ({
         authorization: "Bearer " + token,
       },
       method: "DELETE",
-    }).then(function () {
-      alert("Order deleted").then((data) => setOrders(data));
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => setOrders(data))
+      .then(alert("Denne ordre er slettet"));
   }
 
   console.log(orderId);

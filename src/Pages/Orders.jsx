@@ -26,15 +26,15 @@ const Orders = () => {
   console.log("token", token);
 
   return (
-    <div className="mt-10 ml-10">
+    <div className="mt-10 ml-10 py-8">
       <h1 className="text-center font-bold">Bestillinger</h1>
-      <div className="overflow-auto h-screen w-full border rounded-md border-green-800">
+      <div className="mx-8 my-5 overflow-scroll h-screen w-11/12 border rounded-md border-green-800">
         {orders.map((order, index) => (
           <section>
             <table>
               <thead className="bg-orange-700 border-t-2 rounded-md ">
                 <tr>
-                  <th className="table-header">Varens id.</th>
+                  <th className="table-header">ID</th>
                   <th className="table-header">Name</th>
                   <th className="table-header">Type</th>
                   <th className="table-header">Pris pr. kasse</th>
@@ -49,16 +49,21 @@ const Orders = () => {
                     productId={orderedProducts.productId}
                     amount={orderedProducts.amount}
                     orderId={order.id}
-                    order={orders}
-                    setOrder={setOrders}
+                    orders={orders}
+                    setOrders={setOrders}
                     /*camelCase i koden vs. hyphen i api SKAL RETTES!!!!*/
                   />
                 </>
               ))}
             </table>
             <div className="flex">
-              <OrderingCustomerMap customerId={order.customerId} />
-              <div className="flex">
+              <OrderingCustomerMap
+                customerId={order.customerId}
+                bestId={order.id}
+                orderNumber={order.orderNumber}
+              />
+
+              <div className="flex py-32 w-full bg-yellow-50 bg-gradient-to-b px-32 justify-between">
                 {" "}
                 <DeleteOrder
                   orderId={order.id}

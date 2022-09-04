@@ -7,7 +7,12 @@ const PrintOrder = ({ orderId, orders, setOrders }) => {
   return (
     <>
       {" "}
-      <button onClick={() => setIsOpen(true)}>Print bestilling</button>
+      <button
+        className="bg-green-500 w-32 h-10 mx-4 font-bold rounded-md hover:font-extrabold hover:bg-green-600"
+        onClick={() => setIsOpen(true)}
+      >
+        Print bestilling
+      </button>
       <PrintOrderModal
         orders={orders}
         setOrders={setOrders}

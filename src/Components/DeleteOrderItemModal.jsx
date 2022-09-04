@@ -48,7 +48,7 @@ const DeleteOrderItemModal = ({
       },
 
       method: "PATCH",
-    });
+    }).then((data) => setOrders(data));
   }
 
   return (

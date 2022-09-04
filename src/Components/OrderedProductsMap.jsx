@@ -10,6 +10,8 @@ const OrderedProductsMap = ({
   setOrders,
 }) => {
   const [products, setProducts] = useState([]);
+  const [total, setTotal] = useState([]);
+  const totalArray = [];
 
   const { token } = useContext(TokenContext);
 
@@ -28,29 +30,38 @@ const OrderedProductsMap = ({
   const filtered = products.filter((product) => product.id === productId);
 
   return (
-    <tbody>
-      {filtered.map((item, index) => {
-        return (
-          <tr key={index}>
-            <td className="table-cell">{item.id}</td>
-            <td className="table-cell">{item.name}</td>
-            <td className="table-cell">{item.type}</td>
-            <td className="table-cell">{item.price} DKK</td>
-            <td className="table-cell">{amount}</td>
-            <td className="table-cell">{item.price * amount} DKK</td>
-            <td className="table-cell">
-              {" "}
-              <DeleteOrderItem
-                productId={productId}
-                orderId={orderId}
-                orders={orders}
-                setOrders={setOrders}
-              />
-            </td>
-          </tr>
-        );
-      })}
-    </tbody>
+    <>
+      <tbody>
+        {filtered.map((item, index) => {
+          const subTotal = item.price * amount;
+          const subTotalObject = { subTotal };
+          totalArray.push(subTotal);
+
+          return (
+            <tr
+              className="bg-orange-50  border-gray-900 border-solid"
+              key={index}
+            >
+              <td className="table-cell">{item.id}</td>
+              <td className="table-cell">{item.name}</td>
+              <td className="table-cell">{item.type}</td>
+              <td className="table-cell">{item.price} DKK</td>
+              <td className="table-cell">{amount}</td>
+              <td className="table-cell">{subTotal} DKK</td>
+              <td className="table-cell">
+                {" "}
+                <DeleteOrderItem
+                  productId={productId}
+                  orderId={orderId}
+                  orders={orders}
+                  setOrders={setOrders}
+                />
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </>
   );
 };
 

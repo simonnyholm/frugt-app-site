@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import TokenContext from "../Contexts/TokenContext";
 
-const OrderingCustomerMap = ({ customerId }) => {
+const OrderingCustomerMap = ({ customerId, orderNumber, bestId }) => {
   const [customers, setCustomers] = useState([]);
 
   const { token } = useContext(TokenContext);
@@ -26,7 +26,7 @@ const OrderingCustomerMap = ({ customerId }) => {
 
   return (
     <table>
-      <thead className="bg-orange-600 border-t-2 ">
+      <thead className="bg-orange-500 border-t-2 ">
         <tr>
           <th className="table-header">Sendes til kunde:</th>
           <th className="table-header">Kontakt kunde:</th>
@@ -35,28 +35,23 @@ const OrderingCustomerMap = ({ customerId }) => {
       {filteredCostumer.map((item, index) => {
         return (
           <>
-            <tr
-              className="odd:bg-white even:bg-green-50 cursor-pointer"
-              key={index}
-            >
+            <tr className="odd:bg-white even:bg-yellow-100" key={index}>
               <td className="table-cell">{item.name}</td>
               <td className="table-cell">Kunde-id: {item.id}</td>
             </tr>
-            <tr
-              className="odd:bg-white even:bg-green-50 cursor-pointer"
-              key={index}
-            >
+            <tr className="odd:bg-white even:bg-yellow-100" key={index}>
               <td className="table-cell">{item.address.street}</td>
               <td className="table-cell">E-mail: {item.address.email}</td>
             </tr>
-            <tr
-              className="odd:bg-white even:bg-green-50 cursor-pointer"
-              key={index}
-            >
+            <tr className="odd:bg-white even:bg-yellow-100" key={index}>
               <td className="table-cell">
                 {item.address.zip} {item.address.city}
               </td>
               <td className="table-cell">Tlf: {item.address.phone}</td>
+            </tr>
+            <tr className="odd:bg-white even:bg-yellow-100" key={index}>
+              <td className="table-cell">Kundens ordrenr: {orderNumber}</td>
+              <td className="table-cell">Bestillings-id: {bestId}</td>
             </tr>
           </>
         );
