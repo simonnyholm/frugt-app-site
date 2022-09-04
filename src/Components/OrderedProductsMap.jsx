@@ -2,7 +2,13 @@ import { useEffect, useState, useContext } from "react";
 import TokenContext from "../Contexts/TokenContext";
 import DeleteOrderItem from "./DeleteOrderItem";
 
-const OrderedProductsMap = ({ productId, amount, orderId, orders, setOrders }) => {
+const OrderedProductsMap = ({
+  productId,
+  amount,
+  orderId,
+  orders,
+  setOrders,
+}) => {
   const [products, setProducts] = useState([]);
 
   const { token } = useContext(TokenContext);
@@ -22,24 +28,29 @@ const OrderedProductsMap = ({ productId, amount, orderId, orders, setOrders }) =
   const filtered = products.filter((product) => product.id === productId);
 
   return (
-    <div>
+    <tbody>
       {filtered.map((item, index) => {
         return (
-          <div key={index}>
-            <h2>
-              {item.name}, {item.type}
-            </h2>
-
-            <p>
-              {amount} kasse(r) à {item.price} kr.
-            </p>
-            <p>= {item.price * amount} kr.</p>
-
-            <DeleteOrderItem productId={productId} orderId={orderId} orders={orders} setOrders={setOrders} />
-          </div>
+          <tr key={index}>
+            <td className="table-cell">{item.id}</td>
+            <td className="table-cell">{item.name}</td>
+            <td className="table-cell">{item.type}</td>
+            <td className="table-cell">{item.price} DKK</td>
+            <td className="table-cell">{amount}</td>
+            <td className="table-cell">{item.price * amount} DKK</td>
+            <td className="table-cell">
+              {" "}
+              <DeleteOrderItem
+                productId={productId}
+                orderId={orderId}
+                orders={orders}
+                setOrders={setOrders}
+              />
+            </td>
+          </tr>
         );
       })}
-    </div>
+    </tbody>
   );
 };
 

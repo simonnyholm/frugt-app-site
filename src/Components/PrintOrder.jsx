@@ -1,9 +1,22 @@
-const PrintOrder = ({ orderId }) => {
-  function printOrderHandler() {
-    console.log("printOrderHandler-orderId", orderId);
-  }
+import PrintOrderModal from "./PrintOrderModal";
+import { useState } from "react";
 
-  return <button onClick={printOrderHandler}>Print bestilling</button>;
+const PrintOrder = ({ orderId, orders, setOrders }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      {" "}
+      <button onClick={() => setIsOpen(true)}>Print bestilling</button>
+      <PrintOrderModal
+        orders={orders}
+        setOrders={setOrders}
+        orderId={orderId}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+    </>
+  );
 };
 
 export default PrintOrder;

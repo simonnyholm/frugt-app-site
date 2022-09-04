@@ -25,27 +25,43 @@ const OrderingCustomerMap = ({ customerId }) => {
   console.log("filteredCostumer", filteredCostumer);
 
   return (
-    <div>
+    <table>
+      <thead className="bg-orange-600 border-t-2 ">
+        <tr>
+          <th className="table-header">Sendes til kunde:</th>
+          <th className="table-header">Kontakt kunde:</th>
+        </tr>
+      </thead>
       {filteredCostumer.map((item, index) => {
         return (
-          <div key={index}>
-            <div>
-              <p>Bestilling sendes til kunde:</p>
-              <p>{item.name},</p>
-              <p>{item.address.street}</p>
-              <p>
+          <>
+            <tr
+              className="odd:bg-white even:bg-green-50 cursor-pointer"
+              key={index}
+            >
+              <td className="table-cell">{item.name}</td>
+              <td className="table-cell">Kunde-id: {item.id}</td>
+            </tr>
+            <tr
+              className="odd:bg-white even:bg-green-50 cursor-pointer"
+              key={index}
+            >
+              <td className="table-cell">{item.address.street}</td>
+              <td className="table-cell">E-mail: {item.address.email}</td>
+            </tr>
+            <tr
+              className="odd:bg-white even:bg-green-50 cursor-pointer"
+              key={index}
+            >
+              <td className="table-cell">
                 {item.address.zip} {item.address.city}
-              </p>
-            </div>
-            <div>
-              <p>Kunde.id: {item.id}</p>
-              <p>E-mail: {item.address.email}</p>
-              <p>Telefon: {item.address.phone}</p>
-            </div>
-          </div>
+              </td>
+              <td className="table-cell">Tlf: {item.address.phone}</td>
+            </tr>
+          </>
         );
       })}
-    </div>
+    </table>
   );
 };
 
