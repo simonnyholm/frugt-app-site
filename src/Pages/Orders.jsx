@@ -26,32 +26,53 @@ const Orders = () => {
   console.log("token", token);
 
   return (
-    <div>
-      <h1>Bestillinger</h1>
-      <div>
+    <div className="mt-10 ml-10 py-8">
+      <h1 className="text-center font-bold">Bestillinger</h1>
+      <div className="mx-8 my-5 overflow-scroll h-screen pb-24 w-11/12 border rounded-md border-green-800">
         {orders.map((order, index) => (
           <section>
-            <h3>Best.id: {order.id}</h3>
-            <>
+            <table>
+              <thead className="bg-orange-700 border-t-2 rounded-md ">
+                <tr>
+                  <th className="table-header">ID</th>
+                  <th className="table-header">Name</th>
+                  <th className="table-header">Type</th>
+                  <th className="table-header">Pris pr. kasse</th>
+                  <th className="table-header">Antal kasser</th>
+                  <th className="table-header">Sammenlagt pris</th>
+                  <th className="table-header">+/-</th>
+                </tr>
+              </thead>
               {order.products.map((orderedProducts) => (
                 <>
                   <OrderedProductsMap
                     productId={orderedProducts.productId}
                     amount={orderedProducts.amount}
                     orderId={order.id}
-                    order={orders}
-                    setOrder={setOrders}
+                    orders={orders}
+                    setOrders={setOrders}
                     /*camelCase i koden vs. hyphen i api SKAL RETTES!!!!*/
                   />
                 </>
               ))}
-              <OrderTotal total={total} />
-            </>
-            <OrderingCustomerMap customerId={order.customerId} />
-            <DeleteOrder orderId={order.id} orders={orders} setOrders={setOrders} />
-            <PrintOrder orderId={order.id} />
+            </table>
+            <div className="flex">
+              <OrderingCustomerMap
+                customerId={order.customerId}
+                bestId={order.id}
+                orderNumber={order.orderNumber}
+              />
 
-            <hr />
+              <div className="flex py-32 w-full bg-yellow-50 bg-gradient-to-b px-32 justify-between">
+                {" "}
+                <DeleteOrder
+                  orderId={order.id}
+                  orders={orders}
+                  setOrders={setOrders}
+                />
+                <PrintOrder orderId={order.id} />
+              </div>
+            </div>
           </section>
         ))}
       </div>

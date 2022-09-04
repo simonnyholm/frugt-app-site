@@ -6,7 +6,12 @@ const DeleteOrderItem = ({ productId, orderId, orders, setOrders }) => {
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Slet vare</button>
+      <button
+        className="bg-red-500 w-28 h-8 font-bold rounded-md hover:font-extrabold hover:bg-red-600"
+        onClick={() => setIsOpen(true)}
+      >
+        Slet vare
+      </button>
       <DeleteOrderItemModal
         productId={productId}
         orderId={orderId}

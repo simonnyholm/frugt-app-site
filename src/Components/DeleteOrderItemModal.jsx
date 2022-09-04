@@ -28,6 +28,8 @@ const DeleteOrderItemModal = ({
 
     console.log("orderedArray", orderedArray);
 
+    const thisIndex = orderedArray.indexOf(productId);
+
     /*
     const orderlList = async function () {
       const wait = await fetch("http://localhost:3001/orders/");
@@ -46,7 +48,7 @@ const DeleteOrderItemModal = ({
       },
 
       method: "PATCH",
-    });
+    }).then((data) => setOrders(data));
   }
 
   return (

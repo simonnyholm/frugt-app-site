@@ -3,13 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import TokenContext from "../Contexts/TokenContext";
 import { useContext, useEffect } from "react";
 
-const DeleteOrderModal = ({
-  setIsOpen,
-  isOpen,
-  orderId,
-  orders,
-  setOrders,
-}) => {
+const PrintOrderModal = ({ setIsOpen, isOpen, orderId, orders, setOrders }) => {
   const { token } = useContext(TokenContext);
 
   function DeleteHandler() {
@@ -18,10 +12,20 @@ const DeleteOrderModal = ({
         authorization: "Bearer " + token,
       },
       method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => setOrders(data))
-      .then(alert("Denne ordre er slettet"));
+    }).then(function () {
+      alert("Order deleted").then((data) => setOrders(data));
+    });
+  }
+
+  function ArchiveHandler() {
+    fetch(`http://localhost:3001/archive/${orderId}`, {
+      headers: {
+        authorization: "Bearer " + token,
+      },
+      method: "PUT",
+    }).then(function () {
+      alert("Bestilling er printet");
+    });
   }
 
   console.log(orderId);
@@ -53,7 +57,7 @@ const DeleteOrderModal = ({
               X
             </button>
             <p className="p-5">
-              Er du sikker på, at du vil slette hele denne bestilling?
+              Bekræft, at du vil printe og afsende denne bestilling
             </p>
 
             <div className="flex justify-between">
@@ -69,6 +73,7 @@ const DeleteOrderModal = ({
                 onClick={() => {
                   setIsOpen(false);
                   DeleteHandler();
+                  ArchiveHandler();
                 }}
               >
                 Bekræft
@@ -81,4 +86,4 @@ const DeleteOrderModal = ({
   );
 };
 
-export default DeleteOrderModal;
+export default PrintOrderModal;
