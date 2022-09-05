@@ -4,6 +4,7 @@ import { BsSearch } from "react-icons/bs";
 import Details from "../Components/Details";
 
 
+
 export default function Products() {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState();
