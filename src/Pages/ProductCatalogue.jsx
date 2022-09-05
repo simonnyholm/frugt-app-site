@@ -16,6 +16,7 @@ export default function Products() {
         query = `?q=${search}`;
       }
   
+      
       const res = await fetch(`http://localhost:3001/products${query}`, {
         headers: {
           authorization: "Bearer " + token,
